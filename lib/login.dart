@@ -128,7 +128,7 @@ class _loginState extends State<login> {
                         toastLength:Toast.LENGTH_LONG,
                         backgroundColor: Colors.deepOrange);
 
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => home()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
 
                   }else {
                     Fluttertoast.showToast(

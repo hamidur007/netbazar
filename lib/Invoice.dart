@@ -12,10 +12,22 @@ class Invoice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFFffdb98),
+        title: Center(child: Text('Invoice',style: TextStyle(color: Color(0xFF876555), fontSize: 28),),
+        ),
+      ),
+
       body: SafeArea(
         child: ListView(
           children: [
+
+            SizedBox(
+              height: 16,
+            ),
             Center(child: Text('Invoice No : 1000'),),
+
+
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(

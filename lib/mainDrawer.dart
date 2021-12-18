@@ -4,6 +4,7 @@ import 'package:netbazar/profile.dart';
 
 import 'home.dart';
 import 'listproduct.dart';
+import 'login.dart';
 class mainDrawer extends StatelessWidget {
   const mainDrawer({Key? key}) : super(key: key);
 
@@ -57,6 +58,17 @@ class mainDrawer extends StatelessWidget {
               Fluttertoast.showToast(msg: 'Order List',toastLength: Toast.LENGTH_LONG);
             },
           ),
+          ListTile(
+            title: Text('Log Out'),
+            leading: Icon(Icons.logout),
+            onTap: (){
+
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+              Fluttertoast.showToast(msg: 'Log Out',toastLength: Toast.LENGTH_LONG);
+            },
+          ),
+
+
 
         ],
       ),

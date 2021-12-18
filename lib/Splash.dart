@@ -14,8 +14,8 @@ class splash extends StatefulWidget {
 class _splashState extends State<splash> {
 
   void initState(){
-    Timer(Duration(seconds: 5), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login()));
+    Timer(Duration(seconds: 3), (){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => login()));
 
     });
   }
