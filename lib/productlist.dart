@@ -9,6 +9,7 @@ class productlist{
   int rating;
   String imageUrl;
 
+
   productlist(this.id, this.title, this.desc, this.price, this.discount,
       this.quantity, this.unit, this.rating, this.imageUrl);
 

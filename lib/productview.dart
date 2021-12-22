@@ -156,8 +156,7 @@ class _productviewState extends State<productview> {
                                     setState(() {
                                       if (count > 0) {
                                         count--;
-                                      } else {
-                                        count;
+
                                       }
                                       ;
                                     });
@@ -179,8 +178,6 @@ class _productviewState extends State<productview> {
                               setState(() {
                                 if (count < 10) {
                                   count++;
-                                } else {
-                                  //count;
                                 }
                                 ;
                               });
@@ -209,6 +206,27 @@ class _productviewState extends State<productview> {
                                               )));
                                 },
                                 child: Text('Add to Cart',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20)),
+                              ),
+                            ),
+                          )),
+                      Flexible(
+                          flex: 1,
+                          child: Container(
+                            color: Colors.amber,
+                            child: Center(
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Invoice(
+                                            widget.proDetails,
+                                            count,
+                                          )));
+                                },
+                                child: Text('Buy',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20)),
                               ),

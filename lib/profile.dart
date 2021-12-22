@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,8 +11,11 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
-  String user_Email = '--';
-  String password = '--';
+
+  String user_Email = '';
+  String password = '';
+  String username = '--';
+  String userMobile='';
 
   File? imageFile;
 
@@ -23,6 +27,8 @@ class _profileState extends State<profile> {
     // TODO: implement initState
     this.user_Email = user_Email;
     this.password = password;
+    this.username=username;
+    this.userMobile=userMobile;
     getString();
   }
 
@@ -78,8 +84,18 @@ class _profileState extends State<profile> {
                       });}, child: Text("Choose your photo")),
               ),
 
-              Center(child: Text("Email: $user_Email")),
-              Center(child: Text("password: $password")),
+              Align(
+                alignment: Alignment.centerLeft,
+                  child: Text("Email: $user_Email",style: TextStyle(fontSize: 16),)),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text("password: $password",style: TextStyle(fontSize: 16),)),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text("User Name: $username",style: TextStyle(fontSize: 16),)),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text("User Mobile: $userMobile",style: TextStyle(fontSize: 16),)),
 
 
 
@@ -98,6 +114,8 @@ class _profileState extends State<profile> {
     setState(() {
       user_Email = prefs.getString("user_Email") ?? "null";
       password = prefs.getString("user_password") ?? "null";
+      username=prefs.getString("userName")!;
+      userMobile= prefs.getString("userMobile")!;
     });
 
     //return user_name;

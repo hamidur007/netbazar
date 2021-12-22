@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,15 +15,16 @@ class Registration extends StatefulWidget {
 class _RegistrationState extends State<Registration> {
   TextEditingController UserNameController = TextEditingController();
 
-  TextEditingController AreaZipcodeController = TextEditingController();
+  /*TextEditingController AreaZipcodeController = TextEditingController();*/
 
   TextEditingController UserEmailController = TextEditingController();
 
   TextEditingController MobileNumberController = TextEditingController();
 
-  TextEditingController DateofbirthController = TextEditingController();
+  /*TextEditingController DateofbirthController = TextEditingController();*/
 
   TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +90,7 @@ class _RegistrationState extends State<Registration> {
                       hintText: 'Enter your Password'),
                 ),
               ),
-              Padding(
+              /*Padding(
                 padding:const EdgeInsets.all(8.0),
                 child: TextField(
                   controller: DateofbirthController,
@@ -98,8 +101,8 @@ class _RegistrationState extends State<Registration> {
                       labelText: 'Date of birth',
                       hintText: 'Enter your Date of birth'),
                 ),
-              ),
-              Padding(
+              ),*/
+             /* Padding(
                 padding:const EdgeInsets.all(8.0),
                 child: TextField(
                   controller: AreaZipcodeController,
@@ -110,7 +113,7 @@ class _RegistrationState extends State<Registration> {
                       labelText: 'Area Zip Code',
                       hintText: 'Enter your Area Zip Code'),
                 ),
-              ),
+              ),*/
               Container(
                 height: 50,
                 width: 250,
@@ -123,11 +126,12 @@ class _RegistrationState extends State<Registration> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => login()));
                 },
                   child: Text('Submit',style: GoogleFonts.aBeeZee(color: Color(
-                      0xFF876555)),),
+                      0xFF876555),fontSize: 22,fontWeight: FontWeight.bold),),
 
               ),
                 ),
 
+          SizedBox(height: 16,),
 
           Container(
             alignment: Alignment.centerRight,
@@ -138,8 +142,8 @@ class _RegistrationState extends State<Registration> {
               child: Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: Text(
-                  'Have an accont Login',
-                  style: GoogleFonts.aBeeZee(color: Color(0xFF7F14C1)),
+                  'Have an accont ? Login',
+                  style: GoogleFonts.aBeeZee(color: Color(0xFF7F14C1),fontSize: 20,fontWeight: FontWeight.bold),
 
                 ),
               ),
@@ -157,6 +161,8 @@ class _RegistrationState extends State<Registration> {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("user_Email", UserEmailController.text);
     prefs.setString('user_password', passwordController.text);
+    prefs.setString("userName", UserNameController.text);
+    prefs.setString("user_phone", MobileNumberController.text);
 
   }
 }

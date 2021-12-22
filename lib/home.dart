@@ -1,3 +1,5 @@
+import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
@@ -9,8 +11,6 @@ import 'package:netbazar/productlist.dart';
 import 'package:netbazar/productview.dart';
 
 class home extends StatefulWidget {
-  const home({Key? key}) : super(key: key);
-
   @override
   _homeState createState() => _homeState();
 }
@@ -18,14 +18,14 @@ class home extends StatefulWidget {
 class _homeState extends State<home> {
   int _selectNavPosition = 1;
 
-final List<String> imagelist =[
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_wGEdj4gNipiMldcwXPH1_VHI52gpTpNwZQ&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLFWxHuUkaeCR3TPBXv15tiwk1CylmAQVSDQ&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLaE6D66WBUhJn6Uq6wLrYjxVsYe1Wbu6AqA&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThPBQYmjl1GVGdhWIWdehY3WXYsQcD6mLY_A&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZVozcpqUa6yfQWcM8joMCUcyB1eEZ8mn4_w&usqp=CAU",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJcbl2cmQcU7y6WabygXSJJjoIzTzBHerFAA&usqp=CAU",
-];
+  final List<String> imagelist = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_wGEdj4gNipiMldcwXPH1_VHI52gpTpNwZQ&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLFWxHuUkaeCR3TPBXv15tiwk1CylmAQVSDQ&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLaE6D66WBUhJn6Uq6wLrYjxVsYe1Wbu6AqA&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThPBQYmjl1GVGdhWIWdehY3WXYsQcD6mLY_A&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZVozcpqUa6yfQWcM8joMCUcyB1eEZ8mn4_w&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJcbl2cmQcU7y6WabygXSJJjoIzTzBHerFAA&usqp=CAU",
+  ];
 
 /*all product list*/
   /*final List<productlist> productslist = [
@@ -43,97 +43,196 @@ final List<String> imagelist =[
 
   @override
   Widget build(BuildContext context) {
+    int stock = 5;
+    var onstock = "On Stock";
+    var SoldOut = "Out of Stock";
     return Scaffold(
       backgroundColor: Color(0xFFffdb98),
       drawer: mainDrawer(),
       appBar: AppBar(
         backgroundColor: Color(0xFFffdb98),
+        iconTheme: IconThemeData(color: Color(0xFF876555)),
         title: Center(
-          child: Text('Home',style: TextStyle(color: Color(0xFF876555),fontSize: 28),)),
+            child: Text(
+          'Home',
+          style: TextStyle(color: Color(0xFF876555), fontSize: 28),
+        )),
       ),
       body: SafeArea(
         child: ListView(
           children: [
             Container(
               height: 150,
-              child:
-              CarouselSlider.builder(
-                slideBuilder: (index){
+              child: CarouselSlider.builder(
+                slideBuilder: (index) {
                   return Container(
-                    child: Image.network(imagelist[index], fit: BoxFit.fill,),
+                    child: Image.network(
+                      imagelist[index],
+                      fit: BoxFit.fill,
+                    ),
                   );
                 },
                 slideTransform: CubeTransform(),
-                slideIndicator: CircularSlideIndicator(
-                    padding: EdgeInsets.only(bottom: 8)),
+                slideIndicator:
+                    CircularSlideIndicator(padding: EdgeInsets.only(bottom: 8)),
                 autoSliderDelay: Duration(seconds: 5),
                 enableAutoSlider: true,
                 unlimitedMode: true,
                 itemCount: imagelist.length,
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
-                controller: new ScrollController(keepScrollOffset: false),
-                shrinkWrap: true,
-                itemCount: pdata.productslist.length,
+                  controller: new ScrollController(keepScrollOffset: false),
+                  shrinkWrap: true,
+                  itemCount: pdata.productslist.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                    mainAxisSpacing: 10,
-                      childAspectRatio: .78,
-                    crossAxisSpacing: 10
-
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 2,
+                    childAspectRatio: .55,
+                    crossAxisSpacing: 2,
                   ),
-                  itemBuilder: (BuildContext context, index){
+                  itemBuilder: (BuildContext context, index) {
                     return InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> productview(pdata.productslist[index])));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    productview(pdata.productslist[index])));
                       },
-                      child: Card(
-                        elevation: 10,
-                        child: Column(
-                          children: [
-                            Container(
-                               height: MediaQuery.of(context).size.height/4,
-                              child: Image.network(pdata.productslist[index].imageUrl,fit: BoxFit.fill,),
+                      child: Stack(
+                        overflow: Overflow.visible,
+                        alignment: Alignment.topLeft,
+                        children: [
+                          Card(
+                            elevation: 10,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Container(
+                                    height:
+                                        MediaQuery.of(context).size.height / 4,
+                                    child: Image.network(
+                                      pdata.productslist[index].imageUrl,
+                                      fit: BoxFit.fill,
+                                      height: 65,
+                                    ),
+                                  ),
+                                ),
+                                Text(pdata.productslist[index].title),
+                                Text(
+                                    "Price: ${pdata.productslist[index].price.toString()}"),
+                                Container(
+                                  width: 180,
+                                  height: 50,
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        Text("Review"),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            InkWell(
+                                                onTap: () {},
+                                                child: Icon(Icons.star)),
+                                            InkWell(
+                                                onTap: () {},
+                                                child: Icon(Icons.star)),
+                                            InkWell(
+                                                onTap: () {},
+                                                child: Icon(Icons.star)),
+                                            InkWell(
+                                                onTap: () {},
+                                                child: Icon(Icons.star)),
+                                            InkWell(
+                                              onTap: () {},
+                                              child: Icon(Icons.star),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(pdata.productslist[index].title)
-                          ],
-                        ),
-
+                          ),
+                          Positioned(
+                            top: 5,
+                            left: 5,
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: Icon(
+                                    Icons.favorite,
+                                    color: Colors.deepOrange,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 3),
+                                  child: Text("On Stock"),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     );
-                  }
-              ),
+                  }),
             )
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      /*bottomNavigationBar: FancyBottomNavigation(
+          barBackgroundColor: Color(0xFFffdb98),
+
+          tabs: [
+
+            TabData(iconData: Icons.home, title: "Home"),
+            TabData(iconData: Icons.add_alert_sharp, title: "Notification"),
+            TabData(iconData: Icons.shopping_cart, title: "Product"),
+            TabData(iconData: Icons.account_box, title: "Account"),
+          ],
+
+           inactiveIconColor: Color(0xFF876555),
+           circleColor: Color(0xFF876555),
+          onTabChangedListener: (position) {
+            setState(() {
+              */ /*currentPage = position;*/ /*
+            });
+          },
+        ),*/
+
+      /*bottomNavigationBar: BottomNavigationBar(
        items: [
 
          BottomNavigationBarItem(
-           label: 'Product 1',icon: Icon(Icons.date_range)),
+           label: 'Home',icon: Icon(Icons.home)),
       BottomNavigationBarItem(
           label: 'Product 2',icon: Icon(Icons.date_range)),
          BottomNavigationBarItem(
-             label: 'Product 3',icon: Icon(Icons.date_range)),
+             label: 'Notification',icon: Icon(Icons.add_alert_sharp)),
+         BottomNavigationBarItem(
+             label: 'Profile',icon: Icon(Icons.account_box)),
 
        ],
-        backgroundColor: Colors.green,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.purple,
+        backgroundColor: Color(0xFFffdb98),
+        selectedItemColor: Colors.purple,
+        unselectedItemColor: Color(0xFF876555),
         elevation: 20,
         currentIndex: _selectNavPosition,
         onTap: (int index){
          setState(() {
            _selectNavPosition = index;
          });
-         Fluttertoast.showToast(msg: index.toString(), toastLength: Toast.LENGTH_LONG);
+        // Fluttertoast.showToast(msg: index.toString(), toastLength: Toast.LENGTH_LONG);
         },
-      ),
+      ),*/
     );
   }
 }

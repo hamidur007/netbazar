@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.netbazar">
    <application
-        android:label="netbazar"
+        android:label="NetBazar"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

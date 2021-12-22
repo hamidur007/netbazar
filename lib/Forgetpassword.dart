@@ -32,13 +32,15 @@ class _ForgetpasswordState extends State<Forgetpassword> {
   }
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xFFffdb98),
         appBar: AppBar(
           backgroundColor: Color(0xFFffdb98),
-          title: Text("Password Reset",
+          title: Center(
+            child: Text("Password Reset",style: TextStyle(color: Color(0xFF876555),fontSize: 28),
+            ),
           ),
-          centerTitle: true,
         ),
         body: SafeArea(
           child: Column(
@@ -51,6 +53,8 @@ class _ForgetpasswordState extends State<Forgetpassword> {
                 child: TextField(
                   controller: userEmailController,
                   decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
                       border: OutlineInputBorder(),
                       labelText: 'Type User Email',
                       hintText: 'Enter your User Email'),
@@ -62,6 +66,8 @@ class _ForgetpasswordState extends State<Forgetpassword> {
                   controller: userNewpasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
                       border: OutlineInputBorder(),
                       labelText: 'New password',
                       hintText: 'Enter your New password'),
@@ -73,16 +79,19 @@ class _ForgetpasswordState extends State<Forgetpassword> {
                   controller: userConfirmpasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
                       border: OutlineInputBorder(),
                       labelText: 'Confirm password',
                       hintText: 'Confirm your password'),
                 ),
               ),
+
               Container(
                 height: 50,
                 width: 250,
                 decoration: BoxDecoration(
-                    color: Color(0xFF7F14C1FF),
+                    color: Color(0xFFFFFFFF),
                     borderRadius: BorderRadius.circular(20)),
                 child: TextButton(onPressed: () {
                   if (userEmail == userEmailController.text) {
@@ -113,8 +122,8 @@ class _ForgetpasswordState extends State<Forgetpassword> {
                   }
                 },
 
-                  child: Text('Submit',style: GoogleFonts.aBeeZee(color: Color(
-                      0xFF7F14C1)))
+                    child: Text('Submit',style: GoogleFonts.aBeeZee(color: Color(
+                        0xFF876555),fontSize: 22,fontWeight: FontWeight.bold),)
                 ),
               ),
             ],

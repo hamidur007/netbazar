@@ -21,8 +21,9 @@ class listproduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Product Menu'),
-        ),
+            backgroundColor: Color(0xFFffdb98),
+          title: Center(child: Text('Product Menu',style: TextStyle(color: Color(0xFF876555),fontSize: 28),))),
+
         body:
         ListView.builder(
           itemCount: prolist.productslist.length,
