@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:netbazar/profile.dart';
+import 'package:netbazar/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Contact Us.dart';
@@ -119,6 +120,16 @@ class _mainDrawerState extends State<mainDrawer> {
                   context, MaterialPageRoute(builder: (context) => login()));
               Fluttertoast.showToast(
                   msg: 'Log Out', toastLength: Toast.LENGTH_LONG);
+            },
+          ),
+         ListTile(
+            title: Text('search'),
+            leading: Icon(Icons.logout),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => search()));
+              Fluttertoast.showToast(
+                  msg: 'search', toastLength: Toast.LENGTH_LONG);
             },
           ),
         ],

@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.netbazar">
+    package="sherpur_batch01.hamid7927.netbazar">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="NetBazar"
         android:icon="@mipmap/ic_launcher">

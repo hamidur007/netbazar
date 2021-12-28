@@ -14,7 +14,7 @@ class _profileState extends State<profile> {
 
   String user_Email = '';
   String password = '';
-  String username = '--';
+  String username = '';
   String userMobile='';
 
   File? imageFile;
@@ -106,7 +106,6 @@ class _profileState extends State<profile> {
     );
   }
 
-  getShapref() async {}
 
    getString() async {
     final prefs = await SharedPreferences.getInstance();
@@ -115,7 +114,7 @@ class _profileState extends State<profile> {
       user_Email = prefs.getString("user_Email") ?? "null";
       password = prefs.getString("user_password") ?? "null";
       username=prefs.getString("userName")!;
-      userMobile= prefs.getString("userMobile")!;
+      userMobile= prefs.getString("user_phone")!;
     });
 
     //return user_name;
